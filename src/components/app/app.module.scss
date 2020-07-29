@@ -1,0 +1,19 @@
+.logo {
+  text-align: center;
+}
+.menu {
+  width: 232px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+}
