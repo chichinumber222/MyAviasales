@@ -1,8 +1,35 @@
+@font-face {
+  font-family: Open Sans;
+  src: url('../../fonts/OpenSans-Regular.ttf');
+}
+
 .card {
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
   padding: 20px;
-  height: 190px;
+  height: 184px;
   background-color: white;
   border: 1px solid blue;
+
+  .price {
+    color: #2196F3;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Open Sans;
+  
+    .head {
+      color: #A0B0B9;
+      font-size: 0.75rem;
+    }
+    .value {
+      color: #4A4A4A;
+      font-size: 0.875rem;
+    }
+  }
 }
