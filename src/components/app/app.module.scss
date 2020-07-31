@@ -1,19 +1,26 @@
-.logo {
-  text-align: center;
-}
-.menu {
-  width: 232px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-}
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-.checkboxes {
-  display: flex;
-  flex-direction: column;
+.app {
+  .logo {
+    text-align: center;
+    margin: 30px 0 25px 0;
+  }
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .menu {
+      width: 232px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 0 20px 20px 0;
+
+      .checkboxes {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
