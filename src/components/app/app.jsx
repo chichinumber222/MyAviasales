@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import Logo from '../../images/Logo.png';
 import styles from './app.module.scss';
-import { Checkbox } from 'antd';
+import Checkboxes from '../checkboxes';
 import TicketServiceTest from '../../services/ticket-service-test';
 import CardsList from '../cards-list';
 import Tabs from '../tabs';
 import 'antd/dist/antd.css';
 
 function App() {
-  const checkboxOptions = ['Все', 'Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
-
   const [ activeTab, setActiveTab ] = useState(1);
   const [ tickets, setTickets ] = useState(TicketServiceTest());
+
+  const optionsCheckboxes = ['Все', 'Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
 
   return (
     <div className={styles.app}>
@@ -20,8 +20,8 @@ function App() {
       </div>
       <div className={styles.main}>
         <div className={styles.menu}>
-          <p>Количество пересадок</p>
-          <Checkbox.Group className={styles.checkboxes} options={checkboxOptions} />
+          <p className={styles.menu__heading}>Количество пересадок</p>
+          <Checkboxes options={optionsCheckboxes}/>
         </div>
         <div className={styles.content}>
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab}/>
@@ -33,3 +33,4 @@ function App() {
 }
 
 export default App;
+
