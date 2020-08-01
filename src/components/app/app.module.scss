@@ -40,18 +40,19 @@
       appearance: none;
       vertical-align: middle;
       cursor: inherit;
-  
+
       &:after {
-        content: "";
+        content: '';
         display: block;
         width: 20px;
         height: 20px;
         background: url('../../icons/checkbox.png') no-repeat;
-        margin-right: 10px;         
+        margin-right: 10px;
       }
-  
+
       &:checked:after {
-        background: url('../../icons/checkbox-push.png') no-repeat, url('../../icons/checkbox-mark.png') no-repeat 50% 50%;
+        background: url('../../icons/checkbox-push.png') no-repeat,
+          url('../../icons/checkbox-mark.png') no-repeat 50% 50%;
       }
     }
   }

@@ -1,17 +1,18 @@
-async function request(url, options={}) {
+async function request(url, options = {}) {
+  let body;
   try {
     const response = await fetch(url, options);
 
     if (!response.ok) {
       throw Error(`Could not fetch ${url}. Status: ${response.status}`);
     }
-  
-    const body = await response.json();
-    return body;
 
-  } catch(error) {
-    console.log(`Ошибка: ${error.message}`);
+    body = await response.json();
+  } catch (error) {
+    console.log(`Ошибка в request: ${error.message}`);
   }
+
+  return body;
 }
 
 export default request;
