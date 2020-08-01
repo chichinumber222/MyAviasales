@@ -3,7 +3,7 @@ import Card from '../card';
 
 function CardsList({ cards }) {
   const elements = cards.map((card) => {
-    return <Card {...card}/>;
+    return <Card key={card.id} {...card}/>;
   })
 
   return (

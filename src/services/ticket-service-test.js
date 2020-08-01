@@ -1,6 +1,5 @@
 function TicketServiceTest() {
-  return (
-    [
+    const tickets = [
         {
             "price": 92768,
             "carrier": "EY",
@@ -72,7 +71,13 @@ function TicketServiceTest() {
             ]
         },
     ]
-  )
+
+    const ticketsWithIds = tickets.map((ticket) => {
+        const id = `${ticket.price}${ticket.segments[0].duration}${ticket.segments[1].date}`;
+        return {id, ...ticket};
+    })
+
+  return ticketsWithIds;
 }
 
 export default TicketServiceTest;

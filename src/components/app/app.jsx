@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../../images/Logo.png';
 import styles from './app.module.scss';
-import Checkboxes from '../checkboxes';
 import TicketServiceTest from '../../services/ticket-service-test';
 import CardsList from '../cards-list';
 import Tabs from '../tabs';
@@ -11,8 +10,6 @@ function App() {
   const [ activeTab, setActiveTab ] = useState(1);
   const [ tickets, setTickets ] = useState(TicketServiceTest());
 
-  const optionsCheckboxes = ['Все', 'Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
-
   return (
     <div className={styles.app}>
       <div className={styles.logo}>
@@ -20,8 +17,29 @@ function App() {
       </div>
       <div className={styles.main}>
         <div className={styles.menu}>
-          <p className={styles.menu__heading}>Количество пересадок</p>
-          <Checkboxes options={optionsCheckboxes}/>
+          <p className={styles.menu__header}>Количество пересадок</p>
+          <div className={styles.checkboxes}>
+            <label className={styles.label}>
+              <input type='checkbox' className={styles.checkbox}/>
+              Все
+            </label>
+            <label className={styles.label}>
+              <input type='checkbox' className={styles.checkbox}/>
+              Без пересадок
+            </label>
+            <label className={styles.label}>
+              <input type='checkbox' className={styles.checkbox}/>
+              1 пересадка
+            </label>
+            <label className={styles.label}>
+              <input type='checkbox' className={styles.checkbox}/>
+              2 пересадки
+            </label>
+            <label className={styles.label}>
+              <input type='checkbox' className={styles.checkbox}/>
+              3 пересадки
+            </label>
+          </div>
         </div>
         <div className={styles.content}>
           <Tabs activeTab={activeTab} setActiveTab={setActiveTab}/>

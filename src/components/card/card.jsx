@@ -7,7 +7,7 @@ import calculateStops from '../../services/calculate-stops';
 function Card({ price, carrier, segments }) {
   const ways = segments.map((way) => {
     return (
-      <>
+      <React.Fragment key={way.date}>
         <HeadAndValue 
           head={`${way.origin}-${way.destination}`} 
           value={travelTime(way.date, way.duration)}
@@ -20,7 +20,7 @@ function Card({ price, carrier, segments }) {
           head={calculateStops(way.stops)} 
           value={way.stops.join(', ')}
         />
-      </>
+      </React.Fragment>
     )
   })
 
