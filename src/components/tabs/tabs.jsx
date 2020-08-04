@@ -12,10 +12,10 @@ function Tabs({ activeTab, setActiveTab }) {
       value={activeTab}
       onChange={(event) => setActiveTab(event.target.value)}
     >
-      <Radio.Button className={styles.button} value={1}>
+      <Radio.Button className={styles.button} value="cheapest">
         самый дешевый
       </Radio.Button>
-      <Radio.Button className={styles.button} value={2}>
+      <Radio.Button className={styles.button} value="fastest">
         самый быстрый
       </Radio.Button>
     </Radio.Group>
@@ -23,7 +23,7 @@ function Tabs({ activeTab, setActiveTab }) {
 }
 
 Tabs.propTypes = {
-  activeTab: PropTypes.number.isRequired,
+  activeTab: PropTypes.string.isRequired,
   setActiveTab: PropTypes.func.isRequired,
 };
 

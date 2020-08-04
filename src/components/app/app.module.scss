@@ -25,39 +25,3 @@
     }
   }
 }
-
-.checkboxes {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.82rem;
-  cursor: url('../../icons/cursor.png'), pointer;
-
-  .label {
-    cursor: inherit;
-
-    .checkbox {
-      outline: none;
-      appearance: none;
-      vertical-align: middle;
-      cursor: inherit;
-
-      &:after {
-        content: '';
-        display: block;
-        width: 20px;
-        height: 20px;
-        background: url('../../icons/checkbox.png') no-repeat;
-        margin-right: 10px;
-      }
-
-      &:checked:after {
-        background: url('../../icons/checkbox-push.png') no-repeat,
-          url('../../icons/checkbox-mark.png') no-repeat 50% 50%;
-      }
-    }
-  }
-
-  .label + .label {
-    margin-top: 20px;
-  }
-}
