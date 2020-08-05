@@ -4,13 +4,13 @@ import { Radio } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './tabs.module.scss';
 
-function Tabs({ activeTab, setActiveTab }) {
+function Tabs({ activeTab, selectTabDispatch }) {
   return (
     <Radio.Group
       size="large"
       buttonStyle="solid"
       value={activeTab}
-      onChange={(event) => setActiveTab(event.target.value)}
+      onChange={(event) => selectTabDispatch(event.target.value)}
     >
       <Radio.Button className={styles.button} value="cheapest">
         самый дешевый
@@ -24,9 +24,7 @@ function Tabs({ activeTab, setActiveTab }) {
 
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
-  setActiveTab: PropTypes.func.isRequired,
+  selectTabDispatch: PropTypes.func.isRequired,
 };
 
 export default Tabs;
-
-// testing

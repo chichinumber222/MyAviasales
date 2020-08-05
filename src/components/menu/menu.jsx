@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { showAll, showWithout, showOne, showTwo, showThree } from '../../reduxStore/actions';
 import styles from './menu.module.scss';
 
-function Menu({ all, without, one, two, three, showAll, showWithout, showOne, showTwo, showThree }) {
+function Menu({ checkboxes, dispatch }) {
   return (
     <div className={styles.checkboxes}>
       <label className={styles.label}>
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={all}
-          onChange={(event) => showAll(event.target.checked)}
+          checked={checkboxes.all}
+          onChange={(event) => dispatch(showAll(event.target.checked))}
         />
         Все
       </label>
@@ -18,8 +19,8 @@ function Menu({ all, without, one, two, three, showAll, showWithout, showOne, sh
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={without}
-          onChange={(event) => showWithout(event.target.checked)}
+          checked={checkboxes.without}
+          onChange={(event) => dispatch(showWithout(event.target.checked))}
         />
         Без пересадок
       </label>
@@ -27,8 +28,8 @@ function Menu({ all, without, one, two, three, showAll, showWithout, showOne, sh
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={one}
-          onChange={(event) => showOne(event.target.checked)}
+          checked={checkboxes.one}
+          onChange={(event) => dispatch(showOne(event.target.checked))}
         />
         1 пересадка
       </label>
@@ -36,8 +37,8 @@ function Menu({ all, without, one, two, three, showAll, showWithout, showOne, sh
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={two}
-          onChange={(event) => showTwo(event.target.checked)}
+          checked={checkboxes.two}
+          onChange={(event) => dispatch(showTwo(event.target.checked))}
         />
         2 пересадки
       </label>
@@ -45,8 +46,8 @@ function Menu({ all, without, one, two, three, showAll, showWithout, showOne, sh
         <input
           type="checkbox"
           className={styles.checkbox}
-          checked={three}
-          onChange={(event) => showThree(event.target.checked)}
+          checked={checkboxes.three}
+          onChange={(event) => dispatch(showThree(event.target.checked))}
         />
         3 пересадки
       </label>
@@ -55,16 +56,8 @@ function Menu({ all, without, one, two, three, showAll, showWithout, showOne, sh
 }
 
 Menu.propTypes = {
-  all: PropTypes.bool.isRequired,
-  without: PropTypes.bool.isRequired,
-  one: PropTypes.bool.isRequired,
-  two: PropTypes.bool.isRequired,
-  three: PropTypes.bool.isRequired,
-  showAll: PropTypes.func.isRequired,
-  showWithout: PropTypes.func.isRequired,
-  showOne: PropTypes.func.isRequired,
-  showTwo: PropTypes.func.isRequired,
-  showThree: PropTypes.func.isRequired,
+  checkboxes: PropTypes.objectOf(PropTypes.bool.isRequired).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Menu;

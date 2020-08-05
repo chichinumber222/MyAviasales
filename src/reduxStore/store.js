@@ -2,11 +2,13 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 
 const initialState = {
-  all: false,
-  without: false,
-  one: false,
-  two: false,
-  three: false,
+  checkboxes: {
+    all: false,
+    without: false,
+    one: false,
+    two: false,
+    three: false,
+  },
   tab: 'cheapest',
 };
 
