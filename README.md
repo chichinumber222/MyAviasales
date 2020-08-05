@@ -1,5 +1,6 @@
 ### **Практическая задача**
 # **Aviasales (layout)**
 
-##### *Vercel (ex now):*
+##### *GitHub Pages:*
+https://chichinumber222.github.io/MyAviasales/  
 
