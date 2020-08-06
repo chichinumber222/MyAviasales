@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './card.module.scss';
-import minToHours from '../../services/minutes-to-hours';
-import travelTime from '../../services/travel-time';
-import calculateStops from '../../services/calculate-stops';
+import { travelTime, minutesToHours, calculateStops } from '../../services/work-with-flight-data';
 
 function Card({ price, carrier, segments }) {
   const ways = segments.map((way) => {
     return (
       <React.Fragment key={way.date}>
         <HeadAndValue head={`${way.origin}-${way.destination}`} value={travelTime(way.date, way.duration)} />
-        <HeadAndValue head="В ПУТИ" value={minToHours(way.duration)} />
+        <HeadAndValue head="В ПУТИ" value={minutesToHours(way.duration)} />
         <HeadAndValue head={calculateStops(way.stops)} value={way.stops.join(', ')} />
       </React.Fragment>
     );
