@@ -30,12 +30,6 @@ export const selectTab = (selected) => ({
   selected,
 });
 
-export const asyncActionTest = (name) => {
-  return function (dispatch) {
-    setTimeout(() => dispatch({ type: 'TEST', name }), 2000);
-  };
-};
-
 const getTickets = (tickets) => ({
   type: 'GET_TICKETS',
   tickets,

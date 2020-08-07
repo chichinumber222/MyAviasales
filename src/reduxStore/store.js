@@ -11,7 +11,6 @@ const initialState = {
     three: false,
   },
   tab: 'cheapest',
-  name: '',
   tickets: [],
 };
 

@@ -81,8 +81,6 @@ const reducer = (state, action) => {
           };
     case 'SELECT_TAB':
       return { ...state, tab: action.selected };
-    case 'TEST':
-      return { ...state, name: action.name };
     case 'GET_TICKETS':
       return { ...state, tickets: action.tickets };
     default:
