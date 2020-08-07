@@ -1,13 +1,9 @@
 import request from './request';
 
-class TicketService {
-  getSearchId() {
-    return request(`https://front-test.beta.aviasales.ru/search`);
-  }
-
-  getTickets(searchId) {
-    return request(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
-  }
+export function getSearchIdfromAPI() {
+  return request(`https://front-test.beta.aviasales.ru/search`);
 }
 
-export default TicketService;
+export function getTicketsfromAPI(searchId) {
+  return request(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`);
+}

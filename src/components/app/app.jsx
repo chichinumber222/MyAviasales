@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { asyncGetTickets } from '../../reduxStore/actions';
 import Logo from '../../images/Logo.png';
 import styles from './app.module.scss';
-import TicketServiceTest from '../../services/ticket-service-test';
 import MenuContainer from '../../containers/menu-container';
-import CardsList from '../cards-list';
+import CardsListContainer from '../../containers/cards-list-container';
 import TabsContainer from '../../containers/tabs-container';
 
-function App() {
-  const tickets = TicketServiceTest();
+function App({ dispatch }) {
+  dispatch(asyncGetTickets());
 
   return (
     <div className={styles.app}>
@@ -21,11 +23,15 @@ function App() {
         </div>
         <div className={styles.content}>
           <TabsContainer />
-          <CardsList cards={tickets} />
+          <CardsListContainer />
         </div>
       </div>
     </div>
   );
 }
 
-export default App;
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+export default connect()(App);

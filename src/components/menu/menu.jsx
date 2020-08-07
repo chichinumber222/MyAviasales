@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { showAll, showWithout, showOne, showTwo, showThree } from '../../reduxStore/actions';
+import { showAll, showWithout, showOne, showTwo, showThree, asyncActionTest } from '../../reduxStore/actions';
 import styles from './menu.module.scss';
 
-function Menu({ checkboxes, dispatch }) {
+function Menu({ checkboxes, dispatch, name }) {
   return (
     <div className={styles.checkboxes}>
       <label className={styles.label}>
@@ -51,6 +51,10 @@ function Menu({ checkboxes, dispatch }) {
         />
         3 пересадки
       </label>
+      <button type="button" onClick={(e) => dispatch(asyncActionTest(e.target.name))} name="testing!">
+        Test
+      </button>
+      <p>{name} - имя button</p>
     </div>
   );
 }
@@ -58,6 +62,7 @@ function Menu({ checkboxes, dispatch }) {
 Menu.propTypes = {
   checkboxes: PropTypes.objectOf(PropTypes.bool.isRequired).isRequired,
   dispatch: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default Menu;
