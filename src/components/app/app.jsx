@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { asyncGetTickets } from '../../reduxStore/actions';
-import Logo from '../../images/Logo.png';
+import Logo from '../../styles/images/Logo.png';
 import styles from './app.module.scss';
 import MenuContainer from '../../containers/menu-container';
 import CardsListContainer from '../../containers/cards-list-container';

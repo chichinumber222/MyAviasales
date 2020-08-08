@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.82rem;
-  cursor: url('../../icons/cursor.png'), pointer;
+  cursor: url('../../styles/icons/cursor.png'), pointer;
 
   .label {
     cursor: inherit;
@@ -18,13 +18,13 @@
         display: block;
         width: 20px;
         height: 20px;
-        background: url('../../icons/checkbox.png') no-repeat;
+        background: url('../../styles/icons/checkbox.png') no-repeat;
         margin-right: 10px;
       }
 
       &:checked:after {
-        background: url('../../icons/checkbox-push.png') no-repeat,
-          url('../../icons/checkbox-mark.png') no-repeat 50% 50%;
+        background: url('../../styles/icons/checkbox-push.png') no-repeat,
+          url('../../styles/icons/checkbox-mark.png') no-repeat 50% 50%;
       }
     }
   }

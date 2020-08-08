@@ -1,4 +1,4 @@
-async function request(url, options = {}) {
+async function request(url, options = {}, numbersOfOperations = 0) {
   let body;
   try {
     const response = await fetch(url, options);
@@ -9,7 +9,9 @@ async function request(url, options = {}) {
 
     body = await response.json();
   } catch (error) {
-    console.log(`Ошибка в request: ${error.message}`);
+    if (numbersOfOperations < 3) return request(url, options, numbersOfOperations + 1);
+    const myMessage = 'Does not send request after 3 attempts';
+    throw new Error(`${myMessage}, ${error.message}`);
   }
 
   return body;
