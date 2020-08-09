@@ -5,7 +5,7 @@ import reducer from './reducer';
 const initialState = {
   checkboxes: {
     all: false,
-    without: false,
+    without: true,
     one: false,
     two: false,
     three: false,
