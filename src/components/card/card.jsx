@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import shouldUpdate from 'recompose/shouldUpdate';
 import styles from './card.module.scss';
 import { travelTime, minutesToHours, calculateStops } from '../../services/work-with-flight-data';
 
@@ -44,4 +45,6 @@ HeadAndValue.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
-export default Card;
+const checkPropsChange = (props, nextProps) => nextProps.id !== props.id;
+
+export default shouldUpdate(checkPropsChange)(Card);

@@ -85,6 +85,8 @@ const reducer = (state, action) => {
       return { ...state, tickets: [...state.tickets, ...action.tickets] };
     case 'TICKETS_NOT_RECEIVED':
       return { ...state, error: true };
+    case 'SHOW_MORE_CARDS': 
+      return { ...state, hundredsСounterOfCard: state.hundredsСounterOfCard + 1};
     default:
       return state;
   }
