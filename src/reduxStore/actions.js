@@ -41,7 +41,7 @@ const ticketsNotReceived = () => ({
 
 export const asyncGetTickets = () => {
   return async function (dispatch) {
-    let id = 1;
+    let id = 100;
     try {
       const response = await getSearchIdfromAPI();
       const { searchId } = response;

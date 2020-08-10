@@ -38,6 +38,7 @@ function CardsList({ cards, error, checkboxes, tab, hundredsСounterOfCard, disp
   }, []);
 
   const elementsShort = elements.slice(0, 100*hundredsСounterOfCard);
+  elementsShort.push(<button key={hundredsСounterOfCard} type='button' onClick={() => dispatch(showMoreCards())}>Следующие 100</button>);
 
   if (error) message.error('Impossible to get tickets', 1.3);
 
@@ -49,8 +50,7 @@ function CardsList({ cards, error, checkboxes, tab, hundredsСounterOfCard, disp
     /> 
   : 
   <div>
-    {elementsShort}
-    <button type='button' onClick={() => dispatch(showMoreCards())}>Следующие 100</button>
+    {elementsShort}  
   </div>;
 }
 
