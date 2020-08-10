@@ -10,6 +10,13 @@ import TabsContainer from '../../containers/tabs-container';
 
 function App({ dispatch }) {
   dispatch(asyncGetTickets());
+  const moveUp = () =>  window.scrollTo(window.pageXOffset, 0);
+  const moveDown = () => {
+    const maxDown = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo(window.pageXOffset, maxDown);
+  };
+
+
 
   return (
     <div className={styles.app}>
@@ -26,6 +33,8 @@ function App({ dispatch }) {
           <CardsListContainer />
         </div>
       </div>
+      <div className={styles.arrowTop} onClick={moveUp} />
+      <div className={styles.arrowBottom} onClick={moveDown} />
     </div>
   );
 }
