@@ -13,7 +13,7 @@ const initialState = {
   tab: 'cheapest',
   tickets: [],
   error: false,
-  hundredsСounterOfCard: 1,
+  ticketsPortionsСounter: 1,
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

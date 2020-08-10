@@ -6,7 +6,7 @@ const mapStateToProps = (state) => ({
   error: state.error,
   checkboxes: state.checkboxes,
   tab: state.tab,
-  hundredsСounterOfCard: state.hundredsСounterOfCard,
+  ticketsPortionsСounter: state.ticketsPortionsСounter,
 });
 
 export default connect(mapStateToProps)(CardsList);

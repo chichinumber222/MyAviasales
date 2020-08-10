@@ -1,0 +1,26 @@
+.hidden {
+  display: none;
+}
+.customButton {
+  width: 100%;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background-color: #1890FF;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease-out;
+  cursor: url('../../styles/icons/cursor.png'), pointer;
+  margin: 5px 0 20px 0;
+
+  &:hover {
+    background-color: #40A8FF;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

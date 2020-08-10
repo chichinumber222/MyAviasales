@@ -46,22 +46,22 @@ export const asyncGetTickets = () => {
       const response = await getSearchIdfromAPI();
       const { searchId } = response;
 
-      while(true) {
+      while (true) {
         const response2 = await getTicketsfromAPI(searchId);
         const { tickets, stop } = response2;
         const ticketsWithIds = tickets.map((ticket) => {
-          const ticketWithId = {id, ...ticket};
+          const ticketWithId = { id, ...ticket };
           id += 1;
           return ticketWithId;
-        })
+        });
         dispatch(ticketsReceived(ticketsWithIds));
 
         console.log(ticketsWithIds.length);
         if (stop) {
           console.log('Done');
           break;
-        };
-      }     
+        }
+      }
     } catch (error) {
       dispatch(ticketsNotReceived());
     }
@@ -70,4 +70,4 @@ export const asyncGetTickets = () => {
 
 export const showMoreCards = () => ({
   type: 'SHOW_MORE_CARDS',
-})
+});

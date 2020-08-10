@@ -3,6 +3,7 @@
 .button {
   width: 250px;
   text-align: center;
+  cursor: url('../../styles/icons/cursor.png'), pointer;
 
   @media screen and (max-width: $mobile-width-device) {
     width: 160px;
