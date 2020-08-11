@@ -82,7 +82,7 @@ const reducer = (state, action) => {
     case 'SELECT_TAB':
       return { ...state, tab: action.selected };
     case 'TICKETS_RECEIVED':
-      return { ...state, tickets: [...state.tickets, ...action.tickets] };
+      return { ...state, tickets: [...state.tickets, ...action.tickets], successfulDownload: action.stop };
     case 'TICKETS_NOT_RECEIVED':
       return { ...state, error: true };
     case 'SHOW_MORE_CARDS':

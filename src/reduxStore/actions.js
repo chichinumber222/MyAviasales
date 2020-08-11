@@ -30,9 +30,10 @@ export const selectTab = (selected) => ({
   selected,
 });
 
-const ticketsReceived = (tickets) => ({
+const ticketsReceived = (tickets, stop) => ({
   type: 'TICKETS_RECEIVED',
   tickets,
+  stop, 
 });
 
 const ticketsNotReceived = () => ({
@@ -54,7 +55,7 @@ export const asyncGetTickets = () => {
           id += 1;
           return ticketWithId;
         });
-        dispatch(ticketsReceived(ticketsWithIds));
+        dispatch(ticketsReceived(ticketsWithIds, stop));
 
         console.log(ticketsWithIds.length);
         if (stop) {

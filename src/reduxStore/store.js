@@ -12,6 +12,7 @@ const initialState = {
   },
   tab: 'cheapest',
   tickets: [],
+  successfulDownload: false,
   error: false,
   ticketsPortionsСounter: 1,
 };

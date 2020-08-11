@@ -8,6 +8,7 @@ import MenuContainer from '../../containers/menu-container';
 import CardsListContainer from '../../containers/cards-list-container';
 import TabsContainer from '../../containers/tabs-container';
 import Arrows from '../arrows';
+import LoadingContainer from '../../containers/loading-container';
 
 function App({ dispatch }) {
   dispatch(asyncGetTickets());
@@ -28,6 +29,7 @@ function App({ dispatch }) {
         </div>
       </div>
       <Arrows />
+      <LoadingContainer />
     </div>
   );
 }

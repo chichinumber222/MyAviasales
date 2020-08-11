@@ -7,7 +7,7 @@ import { showMoreCards } from '../../reduxStore/actions';
 import Card from '../card';
 import imitationScroll from '../../services/imitation-scroll-event';
 
-function CardsList({ cards, error, checkboxes, tab, ticketsPortionsСounter, dispatch }) {
+function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch }) {
   function isNeedRender(numberOfStops, specificCheckboxes) {
     switch (numberOfStops) {
       case 0:
@@ -56,8 +56,6 @@ function CardsList({ cards, error, checkboxes, tab, ticketsPortionsСounter, dis
   );
   elementsPart.push(nextTicketsButton);
 
-  if (error) message.error('Impossible to get tickets', 1.5);
-
   return !elements.length ? (
     <Alert message="Рейсов, подходящих под заданные параметры, не найдено" type="info" style={{ marginTop: '20px' }} />
   ) : (
@@ -67,7 +65,6 @@ function CardsList({ cards, error, checkboxes, tab, ticketsPortionsСounter, dis
 
 CardsList.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
-  error: PropTypes.bool.isRequired,
   checkboxes: PropTypes.objectOf(PropTypes.bool).isRequired,
   tab: PropTypes.string.isRequired,
   ticketsPortionsСounter: PropTypes.number.isRequired,

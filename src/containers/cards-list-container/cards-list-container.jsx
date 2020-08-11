@@ -3,7 +3,6 @@ import CardsList from '../../components/cards-list';
 
 const mapStateToProps = (state) => ({
   cards: state.tickets,
-  error: state.error,
   checkboxes: state.checkboxes,
   tab: state.tab,
   ticketsPortionsСounter: state.ticketsPortionsСounter,
