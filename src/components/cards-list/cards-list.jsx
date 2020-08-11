@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import styles from './cards-list.module.scss';
 import { showMoreCards } from '../../reduxStore/actions';
 import Card from '../card';
+import imitationScroll from '../../services/imitation-scroll-event';
 
 function CardsList({ cards, error, checkboxes, tab, ticketsPortionsСounter, dispatch }) {
   function isNeedRender(numberOfStops, specificCheckboxes) {
@@ -44,7 +45,10 @@ function CardsList({ cards, error, checkboxes, tab, ticketsPortionsСounter, dis
     <button
       key={ticketsPortionsСounter}
       type="button"
-      onClick={() => dispatch(showMoreCards())}
+      onClick={() => {
+        dispatch(showMoreCards());
+        imitationScroll();
+      }}
       className={elementsPart.length === elements.length ? styles.hidden : styles.customButton}
     >
       Следующие {portion} рейсов

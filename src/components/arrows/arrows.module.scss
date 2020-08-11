@@ -1,0 +1,33 @@
+.arrow {
+  font-size: 30px;
+  height: 10px;
+  width: 10px;
+  color: #1890FF;
+  position: fixed;
+  cursor: url('../../styles/icons/cursor.png'), pointer;
+  &:before {
+    content: '▲';
+    display: inline-block;
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+  }
+  &:hover::before{
+    opacity: 1;
+  }
+}
+
+.arrowTop {
+  composes: arrow;
+  top: 20px;
+  left: 20px;
+}
+
+.arrowBottom {
+  composes: arrow;
+  bottom: 50px;
+  left: 20px;
+  &:before {
+    transform-origin: center;
+    transform: rotate(180deg);
+  }
+}

@@ -7,16 +7,10 @@ import styles from './app.module.scss';
 import MenuContainer from '../../containers/menu-container';
 import CardsListContainer from '../../containers/cards-list-container';
 import TabsContainer from '../../containers/tabs-container';
+import Arrows from '../arrows';
 
 function App({ dispatch }) {
   dispatch(asyncGetTickets());
-  const moveUp = () =>  window.scrollTo(window.pageXOffset, 0);
-  const moveDown = () => {
-    const maxDown = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo(window.pageXOffset, maxDown);
-  };
-
-
 
   return (
     <div className={styles.app}>
@@ -33,8 +27,7 @@ function App({ dispatch }) {
           <CardsListContainer />
         </div>
       </div>
-      <div className={styles.arrowTop} onClick={moveUp} />
-      <div className={styles.arrowBottom} onClick={moveDown} />
+      <Arrows />
     </div>
   );
 }
