@@ -16,10 +16,19 @@ function Arrows() {
     const nowOffset = window.scrollY;
     const indentTop = 400;
     const indentBottom = 150;
-    if (nowOffset < minOffset + indentTop) setHidden({topArrow: true, bottomArrow: false});
-    if (nowOffset > maxOffset - indentBottom) setHidden({topArrow: false, bottomArrow: true});
-    if (nowOffset > minOffset + indentTop && nowOffset < maxOffset - indentBottom) {
-      setHidden({topArrow: false, bottomArrow: false});
+    
+    switch(true) {
+      case maxOffset < indentTop + indentBottom:
+        setHidden({topArrow: true, bottomArrow: true});
+        break;
+      case nowOffset < minOffset + indentTop:
+        setHidden({topArrow: true, bottomArrow: false});
+        break;
+      case nowOffset > maxOffset - indentBottom: 
+        setHidden({topArrow: false, bottomArrow: true});
+        break;
+      default:
+        setHidden({topArrow: false, bottomArrow: false});
     }
   }
 

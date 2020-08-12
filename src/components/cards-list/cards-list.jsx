@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { message, Alert } from 'antd';
+import { Alert } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './cards-list.module.scss';
 import { showMoreCards } from '../../reduxStore/actions';
 import Card from '../card';
 import imitationScroll from '../../services/imitation-scroll-event';
 
-function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch }) {
+function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, successfulDownload, error }) {
   function isNeedRender(numberOfStops, specificCheckboxes) {
     switch (numberOfStops) {
       case 0:
@@ -56,11 +56,10 @@ function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch }
   );
   elementsPart.push(nextTicketsButton);
 
-  return !elements.length ? (
-    <Alert message="Рейсов, подходящих под заданные параметры, не найдено" type="info" style={{ marginTop: '20px' }} />
-  ) : (
-    <div>{elementsPart}</div>
-  );
+  if (!elements.length) {
+    return successfulDownload || error ? <Alert message="Рейсов, подходящих под заданные параметры, не найдено" type="info" style={{ marginTop: '20px' }} /> : <div/>
+  }
+  return <div>{elementsPart}</div>;
 }
 
 CardsList.propTypes = {
@@ -68,6 +67,8 @@ CardsList.propTypes = {
   checkboxes: PropTypes.objectOf(PropTypes.bool).isRequired,
   tab: PropTypes.string.isRequired,
   ticketsPortionsСounter: PropTypes.number.isRequired,
+  successfulDownload: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 
