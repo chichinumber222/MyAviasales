@@ -1,10 +1,12 @@
 .arrow {
+  outline: none;
   font-size: 30px;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
   color: #1890FF;
   position: fixed;
   cursor: url('../../styles/icons/cursor.png'), pointer;
+
   &:before {
     content: '▲';
     display: inline-block;

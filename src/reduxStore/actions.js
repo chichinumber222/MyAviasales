@@ -1,4 +1,6 @@
+/* eslint-disable no-await-in-loop */
 import { getSearchIdfromAPI, getTicketsfromAPI } from '../services/ticket-service';
+import addIdtoObject from '../services/add-Id -to-object';
 
 export const showAll = (isActive) => ({
   type: 'SHOW_ALL',
@@ -33,7 +35,7 @@ export const selectTab = (selected) => ({
 const ticketsReceived = (tickets, stop) => ({
   type: 'TICKETS_RECEIVED',
   tickets,
-  stop, 
+  stop,
 });
 
 const ticketsNotReceived = () => ({
@@ -41,20 +43,16 @@ const ticketsNotReceived = () => ({
 });
 
 export const asyncGetTickets = () => {
-  return async function (dispatch) {
-    let id = 100;
+  return async function run(dispatch) {
     try {
       const response = await getSearchIdfromAPI();
       const { searchId } = response;
+      const addId = addIdtoObject();
 
       while (true) {
         const response2 = await getTicketsfromAPI(searchId);
         const { tickets, stop } = response2;
-        const ticketsWithIds = tickets.map((ticket) => {
-          const ticketWithId = { id, ...ticket };
-          id += 1;
-          return ticketWithId;
-        });
+        const ticketsWithIds = tickets.map(addId);
         dispatch(ticketsReceived(ticketsWithIds, stop));
 
         console.log(ticketsWithIds.length);
