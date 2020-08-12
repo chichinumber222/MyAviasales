@@ -3,7 +3,7 @@
   font-size: 30px;
   height: 20px;
   width: 20px;
-  color: #1890FF;
+  color: #1890ff;
   position: fixed;
   cursor: url('../../styles/icons/cursor.png'), pointer;
 
@@ -13,7 +13,7 @@
     opacity: 0.4;
     transition: opacity 0.3s ease-out;
   }
-  &:hover::before{
+  &:hover::before {
     opacity: 1;
   }
 }

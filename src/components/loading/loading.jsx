@@ -6,11 +6,17 @@ import styles from './loading.module.scss';
 
 function Loading({ successfulDownload, error }) {
   if (successfulDownload || error) {
-    return <Alert message={error ? 'Sorry, no data loaded' : 'Data loaded successfully'} type={error ? 'error' : 'success'} className={styles.notification}/>
+    return (
+      <Alert
+        message={error ? 'Sorry, no data loaded' : 'Data loaded successfully'}
+        type={error ? 'error' : 'success'}
+        className={styles.notification}
+      />
+    );
   }
   return (
-    <div className={styles["loadingio-spinner-spinner-n1a61uzra8j"]}>
-      <div className={styles["ldio-dn073wlkmag"]}>
+    <div className={styles['loadingio-spinner-spinner-n1a61uzra8j']}>
+      <div className={styles['ldio-dn073wlkmag']}>
         <div />
         <div />
         <div />
@@ -24,13 +30,13 @@ function Loading({ successfulDownload, error }) {
         <div />
         <div />
       </div>
-  </div>
-  )
+    </div>
+  );
 }
 
 Loading.propTypes = {
   successfulDownload: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
-}
+};
 
-export default Loading
+export default Loading;

@@ -8,7 +8,6 @@ import Card from '../card';
 import scrollEventCall from '../../services/scroll-event-call';
 
 function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, successfulDownload, error }) {
-
   useEffect(() => {
     scrollEventCall();
   }, [cards, checkboxes, ticketsPortionsСounter]);
@@ -59,7 +58,15 @@ function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, 
   elementsPart.push(nextTicketsButton);
 
   if (!elements.length) {
-    return successfulDownload || error ? <Alert message="Рейсов, подходящих под заданные параметры, не найдено" type="info" style={{ marginTop: '20px' }} /> : <div/>
+    return successfulDownload || error ? (
+      <Alert
+        message="Рейсов, подходящих под заданные параметры, не найдено"
+        type="info"
+        style={{ marginTop: '20px' }}
+      />
+    ) : (
+      <div />
+    );
   }
   return <div>{elementsPart}</div>;
 }
