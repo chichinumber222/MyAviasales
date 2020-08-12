@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './cards-list.module.scss';
 import { showMoreCards } from '../../reduxStore/actions';
 import Card from '../card';
-import imitationScroll from '../../services/imitation-scroll-event';
+import scrollEventCall from '../../services/scroll-event-call';
 
 function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, successfulDownload, error }) {
+
+  useEffect(() => {
+    scrollEventCall();
+  }, [cards, checkboxes, ticketsPortionsСounter]);
+
   function isNeedRender(numberOfStops, specificCheckboxes) {
     switch (numberOfStops) {
       case 0:
@@ -45,10 +50,7 @@ function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, 
     <button
       key={ticketsPortionsСounter}
       type="button"
-      onClick={() => {
-        dispatch(showMoreCards());
-        imitationScroll();
-      }}
+      onClick={() => dispatch(showMoreCards())}
       className={elementsPart.length === elements.length ? styles.hidden : styles.customButton}
     >
       Следующие {portion} рейсов

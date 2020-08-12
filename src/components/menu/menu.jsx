@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { showAll, showWithout, showOne, showTwo, showThree } from '../../reduxStore/actions';
 import styles from './menu.module.scss';
 
-function Menu({ checkboxes, customDispatch }) {
+function Menu({ checkboxes, dispatch }) {
   return (
     <div className={styles.checkboxes}>
       <label className={styles.label}>
@@ -11,7 +11,7 @@ function Menu({ checkboxes, customDispatch }) {
           type="checkbox"
           className={styles.checkbox}
           checked={checkboxes.all}
-          onChange={(e) => customDispatch(e.target.checked, showAll)}
+          onChange={(event) => dispatch(showAll(event.target.checked))}
         />
         Все
       </label>
@@ -20,7 +20,7 @@ function Menu({ checkboxes, customDispatch }) {
           type="checkbox"
           className={styles.checkbox}
           checked={checkboxes.without}
-          onChange={(e) => customDispatch(e.target.checked, showWithout)}
+          onChange={(event) => dispatch(showWithout(event.target.checked))}
         />
         Без пересадок
       </label>
@@ -29,7 +29,7 @@ function Menu({ checkboxes, customDispatch }) {
           type="checkbox"
           className={styles.checkbox}
           checked={checkboxes.one}
-          onChange={(e) => customDispatch(e.target.checked, showOne)}
+          onChange={(event) => dispatch(showOne(event.target.checked))}
         />
         1 пересадка
       </label>
@@ -38,7 +38,7 @@ function Menu({ checkboxes, customDispatch }) {
           type="checkbox"
           className={styles.checkbox}
           checked={checkboxes.two}
-          onChange={(e) => customDispatch(e.target.checked, showTwo)}
+          onChange={(event) => dispatch(showTwo(event.target.checked))}
         />
         2 пересадки
       </label>
@@ -47,7 +47,7 @@ function Menu({ checkboxes, customDispatch }) {
           type="checkbox"
           className={styles.checkbox}
           checked={checkboxes.three}
-          onChange={(e) => customDispatch(e.target.checked, showThree)}
+          onChange={(event) => dispatch(showThree(event.target.checked))}
         />
         3 пересадки
       </label>
@@ -57,7 +57,7 @@ function Menu({ checkboxes, customDispatch }) {
 
 Menu.propTypes = {
   checkboxes: PropTypes.objectOf(PropTypes.bool.isRequired).isRequired,
-  customDispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Menu;
