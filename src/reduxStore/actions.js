@@ -55,9 +55,9 @@ export const asyncGetTickets = () => {
         const ticketsWithIds = tickets.map(addId);
         dispatch(ticketsReceived(ticketsWithIds, stop));
 
-        console.log(ticketsWithIds.length);
+        // console.log(ticketsWithIds.length);
         if (stop) {
-          console.log('Done');
+          // console.log('Done');
           break;
         }
       }
