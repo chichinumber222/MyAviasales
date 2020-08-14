@@ -1,6 +1,18 @@
+import {
+  SHOW_ALL,
+  SHOW_WITHOUT_TRANSFERS,
+  SHOW_WITH_ONE_TRANSFER,
+  SHOW_WITH_TWO_TRANSFERS,
+  SHOW_WITH_THREE_TRANSFERS,
+  SELECT_TAB,
+  TICKETS_RECEIVED,
+  TICKETS_NOT_RECEIVED,
+  SHOW_MORE_CARDS,
+} from './action-types';
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SHOW_ALL':
+    case SHOW_ALL:
       return {
         ...state,
         checkboxes: {
@@ -11,7 +23,7 @@ const reducer = (state, action) => {
           three: action.active,
         },
       };
-    case 'SHOW_WITHOUT_TRANSFERS':
+    case SHOW_WITHOUT_TRANSFERS:
       return state.checkboxes.one && state.checkboxes.two && state.checkboxes.three
         ? {
             ...state,
@@ -28,7 +40,7 @@ const reducer = (state, action) => {
               without: action.active,
             },
           };
-    case 'SHOW_WITH_ONE_TRANSFER':
+    case SHOW_WITH_ONE_TRANSFER:
       return state.checkboxes.without && state.checkboxes.two && state.checkboxes.three
         ? {
             ...state,
@@ -45,7 +57,7 @@ const reducer = (state, action) => {
               one: action.active,
             },
           };
-    case 'SHOW_WITH_TWO_TRANSFERS':
+    case SHOW_WITH_TWO_TRANSFERS:
       return state.checkboxes.without && state.checkboxes.one && state.checkboxes.three
         ? {
             ...state,
@@ -62,7 +74,7 @@ const reducer = (state, action) => {
               two: action.active,
             },
           };
-    case 'SHOW_WITH_THREE_TRANSFERS':
+    case SHOW_WITH_THREE_TRANSFERS:
       return state.checkboxes.without && state.checkboxes.one && state.checkboxes.two
         ? {
             ...state,
@@ -79,13 +91,13 @@ const reducer = (state, action) => {
               three: action.active,
             },
           };
-    case 'SELECT_TAB':
+    case SELECT_TAB:
       return { ...state, tab: action.selected };
-    case 'TICKETS_RECEIVED':
+    case TICKETS_RECEIVED:
       return { ...state, tickets: [...state.tickets, ...action.tickets], successfulDownload: action.stop };
-    case 'TICKETS_NOT_RECEIVED':
+    case TICKETS_NOT_RECEIVED:
       return { ...state, error: true };
-    case 'SHOW_MORE_CARDS':
+    case SHOW_MORE_CARDS:
       return { ...state, ticketsPortionsСounter: state.ticketsPortionsСounter + 1 };
     default:
       return state;

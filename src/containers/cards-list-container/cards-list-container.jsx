@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CardsList from '../../components/cards-list';
-import { showMoreCards } from '../../reduxStore/actions';
+import { showMoreCards } from '../../reduxStore/actionCreators';
 
 const mapStateToProps = (state) => ({
   cards: state.tickets,

@@ -1,45 +1,46 @@
 /* eslint-disable no-await-in-loop */
 import { getSearchIdfromAPI, getTicketsfromAPI } from '../services/ticket-service';
 import addIdtoObject from '../services/add-Id -to-object';
+import * as types from './action-types';
 
 export const showAll = (isActive) => ({
-  type: 'SHOW_ALL',
+  type: types.SHOW_ALL,
   active: isActive,
 });
 
 export const showWithout = (isActive) => ({
-  type: 'SHOW_WITHOUT_TRANSFERS',
+  type: types.SHOW_WITHOUT_TRANSFERS,
   active: isActive,
 });
 
 export const showOne = (isActive) => ({
-  type: 'SHOW_WITH_ONE_TRANSFER',
+  type: types.SHOW_WITH_ONE_TRANSFER,
   active: isActive,
 });
 
 export const showTwo = (isActive) => ({
-  type: 'SHOW_WITH_TWO_TRANSFERS',
+  type: types.SHOW_WITH_TWO_TRANSFERS,
   active: isActive,
 });
 
 export const showThree = (isActive) => ({
-  type: 'SHOW_WITH_THREE_TRANSFERS',
+  type: types.SHOW_WITH_THREE_TRANSFERS,
   active: isActive,
 });
 
 export const selectTab = (selected) => ({
-  type: 'SELECT_TAB',
+  type: types.SELECT_TAB,
   selected,
 });
 
 const ticketsReceived = (tickets, stop) => ({
-  type: 'TICKETS_RECEIVED',
+  type: types.TICKETS_RECEIVED,
   tickets,
   stop,
 });
 
 const ticketsNotReceived = () => ({
-  type: 'TICKETS_NOT_RECEIVED',
+  type: types.TICKETS_NOT_RECEIVED,
 });
 
 export const asyncGetTickets = () => {
@@ -68,5 +69,5 @@ export const asyncGetTickets = () => {
 };
 
 export const showMoreCards = () => ({
-  type: 'SHOW_MORE_CARDS',
+  type: types.SHOW_MORE_CARDS,
 });

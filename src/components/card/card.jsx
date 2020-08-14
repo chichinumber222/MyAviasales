@@ -38,6 +38,7 @@ Card.propTypes = {
   price: PropTypes.number.isRequired,
   carrier: PropTypes.string.isRequired,
   segments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
   id: PropTypes.number.isRequired,
 };
 

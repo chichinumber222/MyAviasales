@@ -6,15 +6,17 @@ import styles from './cards-list.module.scss';
 import Card from '../card';
 import scrollEventCall from '../../services/scroll-event-call';
 
-function CardsList({
-  cards,
-  checkboxes,
-  tab,
-  ticketsPortionsСounter,
-  showMoreCardsWithDispatch,
-  successfulDownload,
-  error,
-}) {
+function CardsList(props) {
+  const {
+    cards,
+    checkboxes,
+    tab,
+    ticketsPortionsСounter,
+    showMoreCardsWithDispatch,
+    successfulDownload,
+    error,
+  } = props;
+
   useEffect(() => {
     scrollEventCall();
   }, [cards, checkboxes, ticketsPortionsСounter]);
