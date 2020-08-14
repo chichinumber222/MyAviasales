@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import CardsList from '../../components/cards-list';
+import { showMoreCards } from '../../reduxStore/actions';
 
 const mapStateToProps = (state) => ({
   cards: state.tickets,
@@ -10,4 +11,8 @@ const mapStateToProps = (state) => ({
   error: state.error,
 });
 
-export default connect(mapStateToProps)(CardsList);
+const mapDispatchToProps = (dispatch) => ({
+  showMoreCardsWithDispatch: () => dispatch(showMoreCards()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsList);

@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './cards-list.module.scss';
-import { showMoreCards } from '../../reduxStore/actions';
 import Card from '../card';
 import scrollEventCall from '../../services/scroll-event-call';
 
-function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, successfulDownload, error }) {
+function CardsList({
+  cards,
+  checkboxes,
+  tab,
+  ticketsPortionsСounter,
+  showMoreCardsWithDispatch,
+  successfulDownload,
+  error,
+}) {
   useEffect(() => {
     scrollEventCall();
   }, [cards, checkboxes, ticketsPortionsСounter]);
@@ -49,7 +56,7 @@ function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, 
     <button
       key={ticketsPortionsСounter}
       type="button"
-      onClick={() => dispatch(showMoreCards())}
+      onClick={showMoreCardsWithDispatch}
       className={elementsPart.length === elements.length ? styles.hidden : styles.customButton}
     >
       Следующие {portion} рейсов
@@ -58,14 +65,12 @@ function CardsList({ cards, checkboxes, tab, ticketsPortionsСounter, dispatch, 
   elementsPart.push(nextTicketsButton);
 
   if (!elements.length) {
-    return successfulDownload || error ? (
+    return (
       <Alert
-        message="Рейсов, подходящих под заданные параметры, не найдено"
+        message={successfulDownload || error ? 'Рейсов, подходящих под заданные параметры, не найдено' : 'Загрузка...'}
         type="info"
         style={{ marginTop: '20px' }}
       />
-    ) : (
-      <div />
     );
   }
   return <div>{elementsPart}</div>;
@@ -78,7 +83,7 @@ CardsList.propTypes = {
   ticketsPortionsСounter: PropTypes.number.isRequired,
   successfulDownload: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  showMoreCardsWithDispatch: PropTypes.func.isRequired,
 };
 
 export default CardsList;
