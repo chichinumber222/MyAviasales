@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { showAll, showWithout, showOne, showTwo, showThree } from '../../reduxStore/actionCreators';
+import { showAll, showWithout, showOne, showTwo, showThree } from '../../reduxStore/action-creators';
 import styles from './menu.module.scss';
 
 function Menu({ checkboxes, dispatch }) {

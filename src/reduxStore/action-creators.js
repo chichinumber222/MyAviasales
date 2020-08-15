@@ -1,46 +1,56 @@
 /* eslint-disable no-await-in-loop */
 import { getSearchIdfromAPI, getTicketsfromAPI } from '../services/ticket-service';
 import addIdtoObject from '../services/add-Id -to-object';
-import * as types from './action-types';
+import {
+  SHOW_ALL,
+  SHOW_WITHOUT_TRANSFERS,
+  SHOW_WITH_ONE_TRANSFER,
+  SHOW_WITH_TWO_TRANSFERS,
+  SHOW_WITH_THREE_TRANSFERS,
+  SELECT_TAB,
+  TICKETS_RECEIVED,
+  TICKETS_NOT_RECEIVED,
+  SHOW_MORE_CARDS,
+} from './action-types';
 
 export const showAll = (isActive) => ({
-  type: types.SHOW_ALL,
+  type: SHOW_ALL,
   active: isActive,
 });
 
 export const showWithout = (isActive) => ({
-  type: types.SHOW_WITHOUT_TRANSFERS,
+  type: SHOW_WITHOUT_TRANSFERS,
   active: isActive,
 });
 
 export const showOne = (isActive) => ({
-  type: types.SHOW_WITH_ONE_TRANSFER,
+  type: SHOW_WITH_ONE_TRANSFER,
   active: isActive,
 });
 
 export const showTwo = (isActive) => ({
-  type: types.SHOW_WITH_TWO_TRANSFERS,
+  type: SHOW_WITH_TWO_TRANSFERS,
   active: isActive,
 });
 
 export const showThree = (isActive) => ({
-  type: types.SHOW_WITH_THREE_TRANSFERS,
+  type: SHOW_WITH_THREE_TRANSFERS,
   active: isActive,
 });
 
 export const selectTab = (selected) => ({
-  type: types.SELECT_TAB,
+  type: SELECT_TAB,
   selected,
 });
 
 const ticketsReceived = (tickets, stop) => ({
-  type: types.TICKETS_RECEIVED,
+  type: TICKETS_RECEIVED,
   tickets,
   stop,
 });
 
 const ticketsNotReceived = () => ({
-  type: types.TICKETS_NOT_RECEIVED,
+  type: TICKETS_NOT_RECEIVED,
 });
 
 export const asyncGetTickets = () => {
@@ -56,9 +66,9 @@ export const asyncGetTickets = () => {
         const ticketsWithIds = tickets.map(addId);
         dispatch(ticketsReceived(ticketsWithIds, stop));
 
-        // console.log(ticketsWithIds.length);
+        console.log(ticketsWithIds.length);
         if (stop) {
-          // console.log('Done');
+          console.log('Done');
           break;
         }
       }
@@ -69,5 +79,5 @@ export const asyncGetTickets = () => {
 };
 
 export const showMoreCards = () => ({
-  type: types.SHOW_MORE_CARDS,
+  type: SHOW_MORE_CARDS,
 });

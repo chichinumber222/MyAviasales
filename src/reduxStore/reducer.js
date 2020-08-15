@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import {
   SHOW_ALL,
   SHOW_WITHOUT_TRANSFERS,
@@ -10,98 +11,97 @@ import {
   SHOW_MORE_CARDS,
 } from './action-types';
 
-const reducer = (state, action) => {
+const beginStatesOfCheckboxes = {
+  all: false,
+  without: true,
+  one: false,
+  two: false,
+  three: false,
+};
+
+function checkboxes(state = beginStatesOfCheckboxes, action) {
   switch (action.type) {
     case SHOW_ALL:
       return {
-        ...state,
-        checkboxes: {
-          all: action.active,
-          without: action.active,
-          one: action.active,
-          two: action.active,
-          three: action.active,
-        },
+        all: action.active,
+        without: action.active,
+        one: action.active,
+        two: action.active,
+        three: action.active,
       };
     case SHOW_WITHOUT_TRANSFERS:
-      return state.checkboxes.one && state.checkboxes.two && state.checkboxes.three
-        ? {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              all: action.active,
-              without: action.active,
-            },
-          }
-        : {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              without: action.active,
-            },
-          };
+      return state.one && state.two && state.three
+        ? { ...state, all: action.active, without: action.active }
+        : { ...state, without: action.active };
     case SHOW_WITH_ONE_TRANSFER:
-      return state.checkboxes.without && state.checkboxes.two && state.checkboxes.three
-        ? {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              all: action.active,
-              one: action.active,
-            },
-          }
-        : {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              one: action.active,
-            },
-          };
+      return state.without && state.two && state.three
+        ? { ...state, all: action.active, one: action.active }
+        : { ...state, one: action.active };
     case SHOW_WITH_TWO_TRANSFERS:
-      return state.checkboxes.without && state.checkboxes.one && state.checkboxes.three
-        ? {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              all: action.active,
-              two: action.active,
-            },
-          }
-        : {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              two: action.active,
-            },
-          };
+      return state.without && state.one && state.three
+        ? { ...state, all: action.active, two: action.active }
+        : { ...state, two: action.active };
     case SHOW_WITH_THREE_TRANSFERS:
-      return state.checkboxes.without && state.checkboxes.one && state.checkboxes.two
-        ? {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              all: action.active,
-              three: action.active,
-            },
-          }
-        : {
-            ...state,
-            checkboxes: {
-              ...state.checkboxes,
-              three: action.active,
-            },
-          };
-    case SELECT_TAB:
-      return { ...state, tab: action.selected };
-    case TICKETS_RECEIVED:
-      return { ...state, tickets: [...state.tickets, ...action.tickets], successfulDownload: action.stop };
-    case TICKETS_NOT_RECEIVED:
-      return { ...state, error: true };
-    case SHOW_MORE_CARDS:
-      return { ...state, ticketsPortionsСounter: state.ticketsPortionsСounter + 1 };
+      return state.without && state.one && state.two
+        ? { ...state, all: action.active, three: action.active }
+        : { ...state, three: action.active };
     default:
       return state;
   }
-};
+}
+
+function tab(state = 'cheapest', action) {
+  switch (action.type) {
+    case SELECT_TAB:
+      return action.selected;
+    default:
+      return state;
+  }
+}
+
+function tickets(state = [], action) {
+  switch (action.type) {
+    case TICKETS_RECEIVED:
+      return [...state, ...action.tickets];
+    default:
+      return state;
+  }
+}
+
+function error(state = false, action) {
+  switch (action.type) {
+    case TICKETS_NOT_RECEIVED:
+      return true;
+    default:
+      return state;
+  }
+}
+
+function ticketsPortionsСounter(state = 1, action) {
+  switch (action.type) {
+    case SHOW_MORE_CARDS:
+      return state + 1;
+    default:
+      return state;
+  }
+}
+
+function successfulDownload(state = false, action) {
+  switch (action.type) {
+    case TICKETS_RECEIVED:
+      return action.stop;
+    default:
+      return state;
+  }
+}
+
+const reducer = combineReducers({
+  checkboxes,
+  tab,
+  tickets,
+  error,
+  ticketsPortionsСounter,
+  successfulDownload,
+});
 
 export default reducer;
