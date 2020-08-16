@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { moveUp, moveDown } from './utils/movements';
 import styles from './arrows.module.scss';
 
 function Arrows() {
-  const moveUp = () => window.scrollTo(window.scrollX, 0);
-  const moveDown = () => {
-    const maxDown = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo(window.scrollX, maxDown);
-  };
-
   const [isHidden, setHidden] = useState({ topArrow: true, bottomArrow: false });
 
   const hide = () => {

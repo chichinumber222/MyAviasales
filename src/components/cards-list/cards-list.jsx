@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Alert } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './cards-list.module.scss';
+import isNeedRender from './utils/is-need-render';
 import Card from '../card';
 import scrollEventCall from '../../services/scroll-event-call';
 
@@ -20,21 +21,6 @@ function CardsList(props) {
   useEffect(() => {
     scrollEventCall();
   }, [cards, checkboxes, ticketsPortionsСounter]);
-
-  function isNeedRender(numberOfStops, specificCheckboxes) {
-    switch (numberOfStops) {
-      case 0:
-        return specificCheckboxes.without;
-      case 1:
-        return specificCheckboxes.one;
-      case 2:
-        return specificCheckboxes.two;
-      case 3:
-        return specificCheckboxes.three;
-      default:
-        return false;
-    }
-  }
 
   const cardsSorted = cards.slice().sort((prevCard, nextCard) => {
     if (tab === 'fastest') {
