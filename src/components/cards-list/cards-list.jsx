@@ -29,14 +29,16 @@ function CardsList(props) {
     return prevCard.price - nextCard.price;
   });
 
-  const elements = cardsSorted.reduce((acc, card) => {
-    const stopsIn = card.segments[0].stops.length;
-    const stopsFrom = card.segments[1].stops.length;
-    if (isNeedRender(stopsIn, checkboxes) || isNeedRender(stopsFrom, checkboxes)) {
-      acc.push(<Card key={card.id} {...card} />);
-    }
-    return acc;
-  }, []);
+  const elements = cardsSorted
+    .map((card) => {
+      const stopsIn = card.segments[0].stops.length;
+      const stopsFrom = card.segments[1].stops.length;
+      if (isNeedRender(stopsIn, checkboxes) || isNeedRender(stopsFrom, checkboxes)) {
+        return <Card key={card.id} {...card} />;
+      }
+      return false;
+    })
+    .filter(Boolean);
 
   const portion = 100;
   const elementsPart = elements.slice(0, portion * ticketsPortionsСounter);
